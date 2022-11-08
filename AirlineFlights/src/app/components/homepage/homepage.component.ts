@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
+  departureCity: string = "";
+  arrivalCity: string = "";
+
+  testCities: string[] = ["Boston", "New York", "Miami", "Chicago", "Los Angeles", "Dallas"];
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  findFlight(){
+    console.log(this.departureCity, this.arrivalCity);
+  }
 }

@@ -1,1 +1,14 @@
-<p>homepage works!</p>
+
+<!-- Form to submit the flight -->
+<form (ngSubmit)="findFlight()">
+
+    <select name="departCity-drop" id="departCity-drop" [(ngModel)] = "departureCity" >
+        <option *ngFor="let city of testCities">{{ city }}</option>
+    </select>
+    
+    <select name="arrivalCity-drop" id="arrivalCity-drop" [(ngModel)] = "arrivalCity" >
+        <option *ngFor="let city of testCities">{{ city }}</option>
+    </select>
+
+    <input type="submit" value="Find Flight">
+</form>
