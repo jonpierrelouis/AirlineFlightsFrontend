@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FindFlightService } from 'src/app/find-flight.service';
 import City from 'src/app/models/City';
+import Flight from 'src/app/models/Flight';
 
 @Component({
   selector: 'app-homepage',
@@ -16,6 +17,11 @@ export class HomepageComponent implements OnInit {
   testCities: string[] = ["Boston", "New York", "Miami", "Chicago", "Los Angeles", "Dallas"];
   cities: City[] = [];
 
+  flights: Flight[] = [];
+
+  dcity: string = "";
+  acity: string[] = [];
+
   constructor(private fly: FindFlightService) { }
 
   ngOnInit(): void {
@@ -30,14 +36,18 @@ export class HomepageComponent implements OnInit {
   findFlight(){
     console.log(this.departureCity, this.arrivalCity);
 
-    if(this.arrivalCity = this.obj){
-      // this.fly.getFlightsWithOnlyDeparture(this.departureCity).subscribe((flights) => {
-      //   console.log(flights);
-      // })
-      this.fly.getFlightsWithOnlyDeparture(this.departureCity);
+    if(this.arrivalCity.city_id == 0 ){
+      this.fly.getFlightsWithOnlyDeparture(this.departureCity).subscribe((flights) => {
+        console.log(flights);
+        this.flights = flights;
+      
+      })
+      
     }else{
       this.fly.getFlights(this.departureCity, this.arrivalCity).subscribe((flights) =>{
         console.log(flights);
+        this.flights = flights;
+
       })
 
     }

@@ -21,16 +21,13 @@ export class FindFlightService {
       arrivalCity
     }
 
-    return this.http.post<Flight[]>(`${this.baseUrl}/flights`, JSON.stringify(obj));
+    return this.http.get<Flight[]>(`${this.baseUrl}/flights/${departureCity.city_id}/${arrivalCity.city_id}`);
   }
 
-  getFlightsWithOnlyDeparture(departureCity: City): void{
+  getFlightsWithOnlyDeparture(departureCity: City): Observable<Flight[]>{
 
-    let obj = {
-      departureCity
-    }
     console.log(departureCity.city_id);
-    this.http.post<Flight[]>(`${this.baseUrl}/flights/departing`,departureCity).subscribe((data) => console.log(data))
+    return this.http.get<Flight[]>(`${this.baseUrl}/flights/departing/${departureCity.city_id}`);
 
   }
 

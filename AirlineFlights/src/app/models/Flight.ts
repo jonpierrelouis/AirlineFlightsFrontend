@@ -1,14 +1,14 @@
 export default class Flight {
-    id: number;
-    departureCity: string;
-    arrivalCity: string;
+    flight_id: number;
+    departure_city: string;
+    arrival_city: string;
     airline: string;
     cost: number;
 
-    constructor(id: number, departureCity: string, arrivalCity: string, airline: string, cost: number){
-        this.id = id;
-        this.departureCity = departureCity;
-        this.arrivalCity = arrivalCity;
+    constructor(flight_id: number, departure_city: string, arrival_city: string, airline: string, cost: number){
+        this.flight_id = flight_id;
+        this.departure_city = departure_city;
+        this.arrival_city= arrival_city;
         this.airline = airline;
         this.cost = cost;
     }

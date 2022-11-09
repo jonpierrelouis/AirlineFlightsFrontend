@@ -1,15 +1,33 @@
 
 <!-- Form to submit the flight -->
 <form (ngSubmit)="findFlight()">
-
-    <select name="departCity-drop" id="departCity-drop" [(ngModel)] = "departureCity" >
-        <option *ngFor="let city of cities" [ngValue] = "city"
-        >{{ city.name }}</option>
-    </select>
-    
-    <select name="arrivalCity-drop" id="arrivalCity-drop" [(ngModel)] = "arrivalCity" >
-        <option *ngFor="let city of cities">{{ city.name }}</option>
-    </select>
-
-    <input type="submit" value="Find Flight">
+    <div>
+        <label for="departCity-drop">Departing City:  </label>
+        <select name="departCity-drop" id="departCity-drop" [(ngModel)] = "departureCity" >
+            <option *ngFor="let city of cities" [ngValue] = "city"
+            >{{ city.name }}</option>
+        </select>
+    </div>
+    <div>
+        <label for="arrivalCity-drop">Arrival City (Optional):  </label>
+        <select name="arrivalCity-drop" id="arrivalCity-drop" [(ngModel)] = "arrivalCity" >
+            <option *ngFor="let city of cities" [ngValue] = "city" >{{ city.name }}</option>
+        </select>
+    </div>
+    <div>
+        <input type="submit" value="Find Flight">
+    </div>
 </form>
+
+<br>
+
+<div *ngIf="flights.length > 0">
+Flights List
+<p *ngFor="let flight of flights">
+    Flight Id: {{flight.flight_id}}
+    Departing City: {{flight.departure_city}}
+    Arrival City: {{flight.arrival_city}}
+    Airline: {{flight.airline}}
+    Cost: ${{flight.cost}}
+</p>
+</div>
