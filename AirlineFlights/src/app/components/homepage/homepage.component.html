@@ -3,11 +3,12 @@
 <form (ngSubmit)="findFlight()">
 
     <select name="departCity-drop" id="departCity-drop" [(ngModel)] = "departureCity" >
-        <option *ngFor="let city of testCities">{{ city }}</option>
+        <option *ngFor="let city of cities" [ngValue] = "city"
+        >{{ city.name }}</option>
     </select>
     
     <select name="arrivalCity-drop" id="arrivalCity-drop" [(ngModel)] = "arrivalCity" >
-        <option *ngFor="let city of testCities">{{ city }}</option>
+        <option *ngFor="let city of cities">{{ city.name }}</option>
     </select>
 
     <input type="submit" value="Find Flight">
